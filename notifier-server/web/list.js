@@ -1,6 +1,9 @@
 const express = require('express');
 const repo = require('../lib/repo');
 
+/**
+ * Provides a way to read messages in the database
+ */
 const listRoute = (req, res) => {
     repo
         .list()

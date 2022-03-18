@@ -1,19 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const repo = require('../lib/repo');
+const queue = require('../lib/queue');
 
 /**
- * Receives any text posted to it, saves it to our database as the text attribute of a message, and returns an affirmative
- * response
+ * Enqueues data and confirms that we have received it
  */
 const webhookRoute = (req, res) => {
     const message = {
         text: req.body,
     };
-    repo
-        .create(message)
-        .then(record => {
-            res.end('Saved' + JSON.stringify(record));
+    queue
+        .send('incoming', message)
+        .then(() => {
+            res.end('Received ' + JSON.stringify(message));
         })
         .catch(e => {
             console.error(e);

@@ -12,28 +12,23 @@ const channel = () => {
 
 /**
  * Allows us to send a message on a given queue
- * @param { string } queue -
- * @param { object } message -
+ * @param { string } queue - Identifies which queue to send the message
+ * @param { object } message - { text: string }
  */
-const send = (queue, message) => {
-    console.log("Queue from send: ", queue);
-    console.log("Message from send: ", message);
+const send = (queue, message) =>
     channel().then(channel => {
         const encodedMessage = JSON.stringify(message);
         channel.assertQueue(queue, { durable: false });
         channel.sendToQueue(queue, Buffer.from(encodedMessage));
         console.log('Sent to "%s" message %s', queue, encodedMessage);
     });
-};
 
 /**
  * Allows us to listen for messages on a given queue, calling in a passed-in handler when a message arrives
- * @param { string } queue -
- * @param { object } handler -
+ * @param { string } queue - Identifies which queue has received the message
+ * @param { function } handler - Saves incoming data to database
  */
-const receive = (queue, handler) => {
-    console.log("Queue from receive: ", queue);
-    console.log("Handler from receive: ", handler);
+const receive = (queue, handler) =>
     channel().then(channel => {
         channel.assertQueue(queue, { durable: false });
         console.log('Listening for messages on queue "%s"', queue);
@@ -41,6 +36,5 @@ const receive = (queue, handler) => {
             noAck: true,
         };
     });
-};
 
 module.exports = { send, receive }
