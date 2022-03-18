@@ -16,8 +16,15 @@ const messageSchema = new mongoose.Schema({
 
 const Message = mongoose.model('Message', messageSchema);
 
+/**
+ * Saves a new message record with the attributes we pass it
+ * @param { object } attrs - Message attributes include text and url
+ */
 const create = attrs => new Message(attrs).save();
 
+/**
+ * Returns all the message records in the database in the reverse order they were created
+ */
 const list = () => Message.find().then(messages => messages.slice().reverse());
 
-module.exports(create, list);
+module.exports = { create, list };
