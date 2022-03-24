@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4fc61481-783e-44a3-b644-c9db667838be" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../notifier-server/workers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../notifier-server/workers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +23,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -37,6 +39,7 @@
       <option name="presentableId" value="Default" />
       <updated>1647883655076</updated>
       <workItem from="1647883656508" duration="33000" />
+      <workItem from="1647960406146" duration="2712000" />
     </task>
     <servers />
   </component>

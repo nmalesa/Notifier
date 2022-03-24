@@ -10,10 +10,24 @@ const httpUrl = Platform.select({
 
 // Makes a web service request and stores the data in the response
 const loadInitialData = async setMessages => {
-    const messages = await axios.get(`${httpUrl}/list`);
-    setMessages(messages.data);
+    // const messages = await axios.get(`${httpUrl}/list`);
+    // setMessages(messages.data);
+    // console.log('Messages: ', messages.data);
+    const messages = [
+        {
+            _id: 1,
+            text: "Elephant",
+        },
+        {
+            _id: 2,
+            text: "Cat",
+        }
+    ];
+    setMessages(messages);
+    console.log(messages);
 };
 
+// TODO:  App is receiving the data--it's just not displaying the data
 export default function MessageList() {
     const [messages, setMessages] = useState([]);
 
@@ -25,10 +39,10 @@ export default function MessageList() {
         <View style={{ flex: 1 }}>
             <FlatList
                 data={messages}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item._id}
                 renderItem={({ item }) => (
                     <ListItem
-                        title={item.text}
+                        title={"Hello, world!"}
                         bottomDivider
                     />
                 )}
