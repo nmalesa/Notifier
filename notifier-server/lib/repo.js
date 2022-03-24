@@ -14,7 +14,7 @@ const messageSchema = new mongoose.Schema({
     url: String,
 });
 
-const Message = mongoose.model('Message', messageSchema);
+const Message = mongoose.model('Message', messageSchema)
 
 /**
  * Saves a new message record with the attributes we pass it
