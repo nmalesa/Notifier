@@ -2,7 +2,8 @@ const queue = require('../lib/queue');
 const repo = require('../lib/repo');
 
 /**
- * Listens for incoming data and saves it to database
+ * Receives a message on the incoming queue, saves the record to the database, and sends another message out on the socket
+ * queue
  * @param { object } message - { text: string }
  */
 const handleIncoming = message =>
@@ -10,6 +11,7 @@ const handleIncoming = message =>
         .create(message)
         .then(record => {
             console.log('Saved' + JSON.stringify(message));
+            return queue.send('socket', record);
         });
 
     queue
