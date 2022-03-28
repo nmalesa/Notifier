@@ -1,12 +1,12 @@
 const http = require('http');
 const express = require('express');
-const webhookRouter = require('./webhook');
+const webhookRouter = require('./webhooks');
 const listRouter = require('./list');
 const configureWebSockets = require('./socket');
 
 const app = express();
 
-app.use('/webhook', webhookRouter);
+app.use('/webhooks', webhookRouter);
 app.use('/list', listRouter);
 
 const server = http.createServer(app);

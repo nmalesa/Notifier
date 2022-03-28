@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const queue = require('../lib/queue');
+const queue = require('../../lib/queue');
 
 /**
  * Enqueues data and confirms that we have received it
@@ -21,7 +21,4 @@ const webhookRoute = (req, res) => {
         });
 };
 
-const router = express.Router();
-router.post('/', bodyParser.text({ type: '*/*' }), webhookRoute);
-
-module.exports = router;
+module.exports = webhookRoute;
