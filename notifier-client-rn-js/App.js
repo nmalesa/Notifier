@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Platform} from 'react-native';
+import {SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Platform, Linking} from 'react-native';
 import axios from 'axios';
 
 const httpUrl = Platform.select({
@@ -74,6 +74,7 @@ const App = () => {
                 data={messages}
                 renderItem={renderItem}
                 keyExtractor={item => item._id}
+                onPress={() => item.url && Linking.openURL(item.url)}
             />
         </SafeAreaView>
     );
