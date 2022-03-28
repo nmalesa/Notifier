@@ -7,27 +7,43 @@ const httpUrl = Platform.select({
     ios: 'http://localhost:3000',
 });
 
+const wsUrl = Platform.select({
+    android: 'ws://10.0.2.2:3000',
+    ios: 'ws://localhost:3000',
+});
+
+let socket;
+
+const setUpWebSocket = addMessage => {
+    if (!socket) {
+        socket = new WebSocket(wsUrl);
+        console.log('Attempting connection to socket...');
+
+        socket.onopen = () => {
+            console.log('Successfully connected to socket');
+        };
+
+        socket.onclose = event => {
+            console.log('Socket closed connection: ', event);
+            socket = null;
+        };
+
+        socket.onerror = error => {
+            console.log('Socket error: ', error);
+        }
+    }
+
+    socket.onmessage = event => {
+        addMessage(JSON.parse(event.data));
+    };
+};
+
 // Makes a web service request and stores the data in the response
 const loadInitialData = async setMessages => {
     const messages = await axios.get(`${httpUrl}/list`);
     setMessages(messages.data);
     console.log('Messages: ', messages.data);
 };
-
-// const DATA = [
-//     {
-//         id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-//         title: 'First Item',
-//     },
-//     {
-//         id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-//         title: 'Second Item',
-//     },
-//     {
-//         id: '58694a0f-3da1-471f-bd96-145571e29d72',
-//         title: 'Third Item',
-//     },
-// ];
 
 const Item = ({ title }) => (
     <View style={styles.item}>
@@ -41,6 +57,12 @@ const App = () => {
     useEffect(() => {
         loadInitialData(setMessages);
     }, []);
+
+    useEffect(() => {
+        setUpWebSocket(newMessage => {
+            setMessages([newMessage, ...messages]);
+        });
+    }, [messages])
 
     const renderItem = ({ item }) => (
         <Item title={item.text} />
