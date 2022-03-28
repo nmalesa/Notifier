@@ -9,6 +9,8 @@ const app = express();
 app.use('/webhooks', webhookRouter);
 app.use('/list', listRouter);
 
+const uri = process.env.MONGODB_URI;
+
 const server = http.createServer(app);
 configureWebSockets(server);
 

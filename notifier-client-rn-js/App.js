@@ -68,6 +68,7 @@ const App = () => {
         <Item title={item.text} />
     );
 
+    // TODO: REFACTOR APP INTO COMPONENTS AND ADD LIST ITEM
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
