@@ -1,6 +1,6 @@
 const amqp = require('amqplib');
 
-const queueUrl = 'amqp://localhost';
+const queueUrl = process.env.CLOUDAMQP_URL;
 
 /**
  * Connects to the queue and creates a channel for communication

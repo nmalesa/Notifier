@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 const http = require('http');
 const express = require('express');
 const webhookRouter = require('./webhooks');
@@ -9,7 +12,7 @@ const app = express();
 app.use('/webhooks', webhookRouter);
 app.use('/list', listRouter);
 
-const uri = process.env.MONGODB_URI;
+const uri = 'mongodb://localhost:27017/notifier';
 
 const server = http.createServer(app);
 configureWebSockets(server);

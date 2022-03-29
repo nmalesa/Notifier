@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Platform, Linking} from 'react-native';
+import {SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar, Linking} from 'react-native';
 import axios from 'axios';
 
 const httpUrl = Platform.select({
