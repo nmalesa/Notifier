@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
       <div>
-        <p>Hello, world!</p>
+        <p>Is the manifest working?</p>
       </div>
   );
 }
