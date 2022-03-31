@@ -35,7 +35,13 @@ const loadInitialData = async setMessages => {
     const messages = await axios.get(`${httpUrl}/list`);
     setMessages(messages.data);
     console.log('Messages: ', messages.data);
-}
+};
+
+const Item = ({ message }) => (
+    <div className="item">
+        <p className="item_message">{message}</p>
+    </div>
+)
 
 function App() {
   return (
@@ -44,5 +50,21 @@ function App() {
     </div>
   );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        marginTop: StatusBar.currentHeight || 0,
+    },
+    item: {
+        backgroundColor: '#f9c2ff',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+    },
+    title: {
+        fontSize: 32,
+    },
+});
 
 export default App;
