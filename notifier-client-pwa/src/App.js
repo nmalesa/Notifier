@@ -1,10 +1,11 @@
+import React from 'react';
 import './App.css';
 
 function App() {
   return (
-      <div>
-        <p>Is the manifest working?</p>
-      </div>
+    <div>
+      <p>Hello, world!</p>
+    </div>
   );
 }
 
