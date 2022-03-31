@@ -3,12 +3,14 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const http = require('http');
 const express = require('express');
+const cors = require('cors');
 const webhookRouter = require('./webhooks');
 const listRouter = require('./list');
 const configureWebSockets = require('./socket');
 
 const app = express();
 
+app.use(cors);
 app.use('/webhooks', webhookRouter);
 app.use('/list', listRouter);
 
