@@ -31,6 +31,12 @@ const setUpWebSocket = addMessage => {
     };
 };
 
+const loadInitialData = async setMessages => {
+    const messages = await axios.get(`${httpUrl}/list`);
+    setMessages(messages.data);
+    console.log('Messages: ', messages.data);
+}
+
 function App() {
   return (
     <div>
